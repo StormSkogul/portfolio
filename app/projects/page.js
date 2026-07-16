@@ -2,6 +2,7 @@ import { Nav } from '@/components/nav';
 
 const projects = [
   {
+    id: 'aion',
     name: 'Aion',
     tagline: 'LLVM optimization debugger',
     description:
@@ -10,6 +11,7 @@ const projects = [
     github: 'https://github.com/janmejayapanda400/aion',
   },
   {
+    id: 'lain-os',
     name: 'Lain-OS',
     tagline: 'Experimental kernel (codenamed Abyss)',
     description:
@@ -18,6 +20,7 @@ const projects = [
     github: 'https://github.com/janmejayapanda400/lain-os',
   },
   {
+    id: 'aetherfm',
     name: 'aetherfm',
     tagline: 'GTK+ file manager',
     description:
@@ -25,6 +28,7 @@ const projects = [
     stack: ['C', 'GTK', 'GLib'],
   },
   {
+    id: 'aether-allocator',
     name: 'Aether Allocator',
     tagline: 'Single-header C allocator',
     description:
@@ -32,6 +36,7 @@ const projects = [
     stack: ['C'],
   },
   {
+    id: 'inter-cpp',
     name: 'inter-cpp',
     tagline: 'Bytecode interpreter',
     description:
@@ -39,6 +44,7 @@ const projects = [
     stack: ['C++17'],
   },
   {
+    id: 'process-analyzer',
     name: 'P.A',
     tagline: 'Process Analyzer',
     description:
@@ -46,6 +52,7 @@ const projects = [
     stack: ['C++'],
   },
   {
+    id: 'rune',
     name: 'rune',
     tagline: 'Classification library',
     description:
@@ -53,6 +60,7 @@ const projects = [
     stack: ['Haskell'],
   },
   {
+    id: 'krrs',
     name: 'krrs',
     tagline: 'Kernel in Rust',
     description:
@@ -60,6 +68,7 @@ const projects = [
     stack: ['Rust'],
   },
   {
+    id: 'bootloader-asm',
     name: 'bootloader-asm',
     tagline: 'x86 bootloader in pure assembly',
     description:
@@ -67,6 +76,7 @@ const projects = [
     stack: ['x86 ASM'],
   },
   {
+    id: 'void-allocator',
     name: 'VoidAllocator',
     tagline: 'Memory allocator for bulk integers',
     description:
@@ -74,6 +84,7 @@ const projects = [
     stack: ['C++'],
   },
   {
+    id: 'bgkernel',
     name: 'bgkernel',
     tagline: 'Real working kernel model',
     description:
@@ -81,6 +92,7 @@ const projects = [
     stack: ['C++', 'ASM'],
   },
   {
+    id: 'quantum-teleport',
     name: 'QuantumTeleportMAUI',
     tagline: 'Quantum teleportation simulator',
     description:
@@ -101,8 +113,8 @@ export default function Projects() {
         </p>
 
         <div className="space-y-8">
-          {projects.map((project, idx) => (
-            <article key={idx} className="pb-6 border-b border-gray-200 last:border-0">
+          {projects.map((project) => (
+            <article key={project.id} className="pb-6 border-b border-gray-200 last:border-0">
               <div className="mb-2">
                 <h2 className="text-lg font-bold inline">
                   {project.github ? (
@@ -124,9 +136,9 @@ export default function Projects() {
               </div>
               <p className="text-gray-700 mb-3">{project.description}</p>
               <div className="flex flex-wrap gap-2">
-                {project.stack.map((tech, i) => (
+                {project.stack.map((tech) => (
                   <span
-                    key={i}
+                    key={`${project.id}-${tech}`}
                     className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded"
                   >
                     {tech}

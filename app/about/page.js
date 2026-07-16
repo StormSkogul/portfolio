@@ -2,35 +2,35 @@ import { Nav } from '@/components/nav';
 import Image from 'next/image';
 
 const films = [
-  'Seven Samurai (1954) — Kurosawa\'s incredible use of horizontal movement.',
-  'Ran (1985) — How color hits you emotionally before you even know what\'s happening.',
-  '2001: A Space Odyssey (1968) — Kubrick\'s absolute technical perfection.',
-  'Barry Lyndon (1975) — Every frame looks like a painting for a reason.',
-  'The Shining (1980) — The way the camera moves makes you feel trapped.',
-  'Pulp Fiction (1994) — The best dialogue and structure in any crime movie.',
-  'Inglourious Basterds (2009) — The opening scene is a lesson in building tension.',
-  'Kill Bill (2003) — Just a wild, beautiful mix of genres.',
-  'Apocalypse Now (1979) — Coppola\'s visual descent into madness. "I love the smell of napalm in the morning."',
+  { id: 'seven-samurai', text: 'Seven Samurai (1954) — Kurosawa\'s incredible use of horizontal movement.' },
+  { id: 'ran', text: 'Ran (1985) — How color hits you emotionally before you even know what\'s happening.' },
+  { id: '2001', text: '2001: A Space Odyssey (1968) — Kubrick\'s absolute technical perfection.' },
+  { id: 'barry-lyndon', text: 'Barry Lyndon (1975) — Every frame looks like a painting for a reason.' },
+  { id: 'the-shining', text: 'The Shining (1980) — The way the camera moves makes you feel trapped.' },
+  { id: 'pulp-fiction', text: 'Pulp Fiction (1994) — The best dialogue and structure in any crime movie.' },
+  { id: 'inglourious', text: 'Inglourious Basterds (2009) — The opening scene is a lesson in building tension.' },
+  { id: 'kill-bill', text: 'Kill Bill (2003) — Just a wild, beautiful mix of genres.' },
+  { id: 'apocalypse-now', text: 'Apocalypse Now (1979) — Coppola\'s visual descent into madness. "I love the smell of napalm in the morning."' },
 ];
 
 const albums = [
-  'My Bloody Valentine – Loveless — probably what started it all for me.',
-  'Slowdive – Souvlaki — the most beautiful dreampop album I\'ve ever found.',
-  'Cocteau Twins – Heaven or Las Vegas — the vocals here are just incredible.',
-  'The Jesus and Mary Chain – Psychocandy — love how they turn feedback into something catchy.',
-  'Ride – Nowhere — early UK shoegaze at its best.',
-  'Lush – Spooky — another great one for those layered, echoing sounds.',
-  'Deftones – White Pony — heavy and atmospheric at the same time.',
-  'Beach House – Bloom — modern dreampop with great textures.',
-  'Whirr – Sway — for when I want something really loud and crushing.',
+  { id: 'mbv-loveless', text: 'My Bloody Valentine – Loveless — probably what started it all for me.' },
+  { id: 'slowdive-souvlaki', text: 'Slowdive – Souvlaki — the most beautiful dreampop album I\'ve ever found.' },
+  { id: 'cocteau-twins', text: 'Cocteau Twins – Heaven or Las Vegas — the vocals here are just incredible.' },
+  { id: 'jamc', text: 'The Jesus and Mary Chain – Psychocandy — love how they turn feedback into something catchy.' },
+  { id: 'ride-nowhere', text: 'Ride – Nowhere — early UK shoegaze at its best.' },
+  { id: 'lush-spooky', text: 'Lush – Spooky — another great one for those layered, echoing sounds.' },
+  { id: 'deftones-white', text: 'Deftones – White Pony — heavy and atmospheric at the same time.' },
+  { id: 'beach-house', text: 'Beach House – Bloom — modern dreampop with great textures.' },
+  { id: 'whirr-sway', text: 'Whirr – Sway — for when I want something really loud and crushing.' },
 ];
 
 const games = [
-  'Sekiro: Shadows Die Twice — my favorite parry system in any game. Always down for a speedrun challenge.',
-  'Dark Souls / Elden Ring — iconic level design that makes you learn from every mistake.',
-  'Ghost of Tsushima — the look of this game is amazing (huge Kurosawa fan, obviously).',
-  'Resident Evil — love the classic games and the whole legacy series.',
-  'CS:GO / CoD — what I play when I just want to test my reflexes.',
+  { id: 'sekiro', text: 'Sekiro: Shadows Die Twice — my favorite parry system in any game. Always down for a speedrun challenge.' },
+  { id: 'dark-souls', text: 'Dark Souls / Elden Ring — iconic level design that makes you learn from every mistake.' },
+  { id: 'ghost-tsushima', text: 'Ghost of Tsushima — the look of this game is amazing (huge Kurosawa fan, obviously).' },
+  { id: 'resident-evil', text: 'Resident Evil — love the classic games and the whole legacy series.' },
+  { id: 'competitive', text: 'CS:GO / CoD — what I play when I just want to test my reflexes.' },
 ];
 
 export default function About() {
@@ -77,9 +77,9 @@ export default function About() {
           <div className="mb-8">
             <h3 className="text-lg font-bold mb-4">favorite films</h3>
             <ul className="space-y-2">
-              {films.map((film, idx) => (
-                <li key={idx} className="text-gray-700">
-                  {film}
+              {films.map((film) => (
+                <li key={film.id} className="text-gray-700">
+                  {film.text}
                 </li>
               ))}
             </ul>
@@ -102,9 +102,9 @@ export default function About() {
           
           <h3 className="text-lg font-bold mb-4">on rotation</h3>
           <ul className="space-y-2">
-            {albums.map((album, idx) => (
-              <li key={idx} className="text-gray-700">
-                {album}
+            {albums.map((album) => (
+              <li key={album.id} className="text-gray-700">
+                {album.text}
               </li>
             ))}
           </ul>
@@ -118,9 +118,9 @@ export default function About() {
           
           <h3 className="text-lg font-bold mb-4">playing</h3>
           <ul className="space-y-2">
-            {games.map((game, idx) => (
-              <li key={idx} className="text-gray-700">
-                {game}
+            {games.map((game) => (
+              <li key={game.id} className="text-gray-700">
+                {game.text}
               </li>
             ))}
           </ul>

@@ -72,8 +72,8 @@ export default function Blog() {
               </div>
               <p className="text-gray-700 mb-3">{post.excerpt}</p>
               <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag, i) => (
-                  <span key={i} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">
+                {post.tags.map((tag) => (
+                  <span key={`${post.slug}-${tag}`} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">
                     {tag}
                   </span>
                 ))}
