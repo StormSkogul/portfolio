@@ -40,73 +40,36 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
-      {/* Main content */}
-      <div className="lg:col-span-2">
-        <div className="mb-8">
-          <h1 className="text-3xl font-light text-white mb-2">blog</h1>
-          <p className="text-slate-400">
-            Thoughts on systems programming, compilers, kernels, and the intersection of art and code.
-          </p>
-        </div>
+    <main className="max-w-4xl mx-auto px-6 py-12">
+      <h1 className="text-3xl font-light text-white mb-2">blog</h1>
+      <p className="text-slate-400 mb-8">Thoughts on systems programming, compilers, and low-level systems.</p>
 
-        <div className="space-y-6">
-          {blogPosts.map((post) => (
-            <article key={post.slug} className="pb-6 border-b border-slate-700 last:border-0">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex-1">
-                  <time className="text-xs text-slate-500 uppercase tracking-wide">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })}
-                  </time>
-                  <h2 className="text-lg text-white font-medium mt-1 mb-2">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-blue-400 hover:text-blue-300"
-                    >
-                      {post.title}
-                    </Link>
-                  </h2>
-                </div>
-              </div>
-              <p className="text-slate-400 text-sm mb-3 leading-relaxed">{post.excerpt}</p>
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span key={`${post.slug}-${tag}`} className="text-xs px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+      <div className="space-y-8">
+        {blogPosts.map((post) => (
+          <article key={post.slug} className="pb-8 border-b border-slate-700 last:border-0">
+            <time className="text-xs text-slate-500">
+              {new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              })}
+            </time>
+            <h2 className="text-2xl text-white font-light mt-2 mb-3">
+              <Link href={`/blog/${post.slug}`} className="text-blue-400 hover:underline">
+                {post.title}
+              </Link>
+            </h2>
+            <p className="text-slate-300 mb-4">{post.excerpt}</p>
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span key={`${post.slug}-${tag}`} className="text-xs px-2 py-1 bg-slate-800 text-slate-300 border border-slate-700">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
-
-      {/* Sidebar */}
-      <aside className="lg:col-span-1">
-        <div className="sticky top-32">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Popular</h3>
-          <div className="space-y-3">
-            {[
-              { title: 'All about thread-local...', views: 44500 },
-              { title: 'int, ctors, and i...', views: 22965 },
-              { title: 'All about Global IFun...', views: 11875 },
-              { title: 'When can glibc be lui...', views: 18264 },
-              { title: 'Stack unwinding (1471)...', views: 14731 },
-            ].map((post, i) => (
-              <div key={i} className="text-xs border-b border-slate-700 pb-3 last:border-0">
-                <a href="#" className="text-blue-400 hover:text-blue-300 line-clamp-2">
-                  {post.title}
-                </a>
-                <span className="text-slate-600 text-xs">({post.views})</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </aside>
     </main>
   );
 }
