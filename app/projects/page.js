@@ -1,4 +1,4 @@
-import { Nav } from '@/components/nav';
+import Link from 'next/link';
 
 const projects = [
   {
@@ -103,43 +103,42 @@ const projects = [
 
 export default function Projects() {
   return (
-    <>
-      <Nav />
-      
-      <main>
-        <h1 className="text-3xl font-bold mb-2">projects</h1>
-        <p className="text-gray-700 mb-8">
-          A collection of things I&apos;ve built. Some are production-ready, others are experiments in understanding how systems work.
-        </p>
+    <main className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+      {/* Main content */}
+      <div className="lg:col-span-2">
+        <div className="mb-8">
+          <h1 className="text-3xl font-light text-white mb-2">projects</h1>
+          <p className="text-slate-400">
+            A collection of things I&apos;ve built. Some are production-ready, others are experiments in understanding systems.
+          </p>
+        </div>
 
         <div className="space-y-8">
           {projects.map((project) => (
-            <article key={project.id} className="pb-6 border-b border-gray-200 last:border-0">
-              <div className="mb-2">
-                <h2 className="text-lg font-bold inline">
-                  {project.github ? (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
-                    >
-                      {project.name}
-                    </a>
-                  ) : (
-                    project.name
-                  )}
-                </h2>
-                <p className="text-gray-600 text-sm mt-1">
-                  {project.tagline}
-                </p>
-              </div>
-              <p className="text-gray-700 mb-3">{project.description}</p>
+            <article key={project.id} className="pb-6 border-b border-slate-700 last:border-0">
+              <h2 className="text-lg text-white font-medium mb-1">
+                {project.github ? (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300"
+                  >
+                    {project.name}
+                  </a>
+                ) : (
+                  project.name
+                )}
+              </h2>
+              <p className="text-slate-500 text-sm mb-3">
+                {project.tagline}
+              </p>
+              <p className="text-slate-300 text-sm mb-3 leading-relaxed">{project.description}</p>
               <div className="flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
                   <span
                     key={`${project.id}-${tech}`}
-                    className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded"
+                    className="text-xs px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700"
                   >
                     {tech}
                   </span>
@@ -148,11 +147,19 @@ export default function Projects() {
             </article>
           ))}
         </div>
+      </div>
 
-        <footer className="mt-12 pt-8 border-t border-gray-200 text-sm text-gray-600">
-          <p>Have a project idea? Reach out on GitHub.</p>
-        </footer>
-      </main>
-    </>
+      {/* Sidebar */}
+      <aside className="lg:col-span-1">
+        <div className="sticky top-32">
+          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Tech Stack</h3>
+          <div className="space-y-2 text-sm text-slate-400">
+            <p><span className="text-blue-400">Languages:</span> C, C++, Rust, Haskell, Q#</p>
+            <p><span className="text-blue-400">Systems:</span> LLVM, RISC-V, x86 Assembly</p>
+            <p><span className="text-blue-400">Tools:</span> GTK, GLib, CMake, Make</p>
+          </div>
+        </div>
+      </aside>
+    </main>
   );
 }

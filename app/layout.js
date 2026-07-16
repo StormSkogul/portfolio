@@ -1,4 +1,5 @@
 import './globals.css';
+import Nav from '@/components/nav';
 
 export const metadata = {
   title: 'janmejaya panda',
@@ -7,9 +8,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-white text-black">
-      <body>
-        <div className="max-w-2xl mx-auto px-4 py-8 md:py-12">
+    <html lang="en" className="bg-slate-950 text-slate-100">
+      <body className="bg-slate-950">
+        <Nav />
+        <div className="min-h-screen bg-slate-950">
           {children}
         </div>
       </body>

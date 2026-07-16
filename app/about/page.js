@@ -1,4 +1,3 @@
-import { Nav } from '@/components/nav';
 import Image from 'next/image';
 
 const films = [
@@ -35,14 +34,13 @@ const games = [
 
 export default function About() {
   return (
-    <>
-      <Nav />
-      
-      <main className="space-y-12">
+    <main className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+      {/* Main content */}
+      <div className="lg:col-span-2 space-y-12">
         <section>
-          <h1 className="text-3xl font-bold mb-6">about me</h1>
+          <h1 className="text-3xl font-light text-white mb-6">about me</h1>
           
-          <div className="space-y-4 text-gray-700">
+          <div className="space-y-4 text-slate-300 leading-relaxed">
             <p>
               I&apos;m a systems programmer obsessed with how software talks to hardware. Started contributing to LLVM/Clang in 2025, focusing on semantic analysis hardening, llvm-libc functions, and RISC-V codegen research.
             </p>
@@ -95,41 +93,33 @@ export default function About() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold mb-4">music</h2>
-          <p className="text-gray-700 mb-6">
-            I listen to a lot of shoegaze, rock, and dreampop. I&apos;ve always loved bands that can create a massive wall of sound where everything just blurs together. Most of my Spotify is basically just a collection of reverb and echoing vocals.
-          </p>
-          
-          <h3 className="text-lg font-bold mb-4">on rotation</h3>
-          <ul className="space-y-2">
-            {albums.map((album) => (
-              <li key={album.id} className="text-gray-700">
-                {album.text}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold mb-4">games</h2>
-          <p className="text-gray-700 mb-6">
+          <h2 className="text-2xl font-light text-white mb-4">games</h2>
+          <p className="text-slate-300 mb-6 leading-relaxed">
             I tend to like games that are actually hard and force you to really pay attention. Mostly FromSoftware stuff. I think that &quot;git gud&quot; mindset is actually pretty useful for building kernels—you just keep trying until it finally clicks. If it&apos;s too easy, I usually get bored pretty fast.
           </p>
           
-          <h3 className="text-lg font-bold mb-4">playing</h3>
+          <h3 className="text-lg font-medium text-white mb-4">playing</h3>
           <ul className="space-y-2">
             {games.map((game) => (
-              <li key={game.id} className="text-gray-700">
+              <li key={game.id} className="text-slate-300 text-sm">
                 {game.text}
               </li>
             ))}
           </ul>
         </section>
+      </div>
 
-        <footer className="mt-12 pt-8 border-t border-gray-200 text-sm text-gray-600">
-          <p>Want to chat about any of this? Find me on GitHub.</p>
-        </footer>
-      </main>
-    </>
+      {/* Sidebar */}
+      <aside className="lg:col-span-1">
+        <div className="sticky top-32">
+          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Skills</h3>
+          <div className="space-y-3 text-sm text-slate-400">
+            <p><span className="text-blue-400">Languages:</span> C, C++, Rust, Haskell, Python</p>
+            <p><span className="text-blue-400">Systems:</span> LLVM, Linux, RISC-V, x86</p>
+            <p><span className="text-blue-400">Tools:</span> GDB, Perf, Valgrind</p>
+          </div>
+        </div>
+      </aside>
+    </main>
   );
 }

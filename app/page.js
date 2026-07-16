@@ -1,82 +1,102 @@
-import { Nav } from '@/components/nav';
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <>
-      <Nav />
-      
-      <main className="space-y-6">
+    <main className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+      {/* Main content */}
+      <div className="lg:col-span-2 space-y-8">
         <section>
-          <h1 className="text-3xl font-bold mb-2">janmejaya panda</h1>
-          <p className="text-lg text-gray-700 mb-4">
-            systems programmer. LLVM/Clang contributor since 2025.
-          </p>
-          <p className="text-gray-700">
-            I work on clang semantic analysis hardening, llvm-libc functions, and RISC-V codegen research. I like working on things where a single misplaced bit can ruin someone&apos;s entire Tuesday.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-bold mb-4">What I&apos;m into</h2>
-          <div className="space-y-3 text-gray-700">
-            <p>
-              <strong>Computing:</strong> I dissect computers from the Linux Kernel to the LLVM IR. Currently architecting experimental kernels, compiler debuggers, and low-level systems. Considers sleep(8) optional.
+          <h2 className="text-2xl font-light text-white mb-4">about me</h2>
+          <div className="prose prose-invert max-w-none">
+            <p className="text-slate-300 leading-relaxed mb-4">
+              Systems programmer. LLVM/Clang contributor since 2025. I work on clang semantic analysis hardening, llvm-libc functions, and RISC-V codegen research.
             </p>
-            <p>
-              <strong>Cinema:</strong> Obsessed with how movies look. I study directors like Kubrick, Kurosawa, Tarantino, and Coppola. The way they handle light, movement, and composition teaches me how to care about details in code.
-            </p>
-            <p>
-              <strong>Music:</strong> Shoegaze, dreampop, and wall-of-sound rock. My Spotify is basically reverb and echoing vocals blurred into a beautiful mess.
-            </p>
-            <p>
-              <strong>Games:</strong> FromSoftware titles. The &quot;git gud&quot; mindset is useful for building kernels—you keep trying until it clicks.
+            <p className="text-slate-300 leading-relaxed">
+              I like working on things where a single misplaced bit can ruin someone&apos;s entire Tuesday. Currently architecting experimental kernels, compiler debuggers, and low-level systems that make most people&apos;s brains hurt.
             </p>
           </div>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mb-4">Currently</h2>
-          <p className="text-gray-700">
-            Primary active project: <Link href="/projects" className="text-blue-600 hover:underline">Aion</Link>, an LLVM optimization debugger that answers the question every compiler engineer loses sleep over: &quot;why didn&apos;t it optimize?&quot;
-          </p>
+          <h2 className="text-2xl font-light text-white mb-4">interests</h2>
+          <div className="space-y-4 text-slate-300">
+            <p>
+              <span className="text-blue-400">Computing:</span> I dissect computers from the Linux Kernel to the LLVM IR. Consider sleep(8) optional.
+            </p>
+            <p>
+              <span className="text-blue-400">Cinema:</span> Kubrick, Kurosawa, Tarantino. The way they handle light and composition teaches me how to care about details.
+            </p>
+            <p>
+              <span className="text-blue-400">Music:</span> Shoegaze and dreampop. My Spotify is basically reverb and echoing vocals blurred into a beautiful mess.
+            </p>
+            <p>
+              <span className="text-blue-400">Games:</span> FromSoftware titles. The &quot;git gud&quot; mindset is useful for kernel development.
+            </p>
+          </div>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mb-4">Quick links</h2>
-          <ul className="list-none space-y-2">
-            <li>
-              <Link href="/projects" className="text-blue-600 hover:underline">
-                See all my projects →
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="text-blue-600 hover:underline">
-                More about me →
-              </Link>
-            </li>
-            <li>
-              <Link href="/blog" className="text-blue-600 hover:underline">
-                Read my thoughts →
-              </Link>
-            </li>
-            <li>
-              <a 
-                href="https://github.com/janmejayapanda400" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                github →
-              </a>
-            </li>
-          </ul>
+          <h2 className="text-2xl font-light text-white mb-4">featured</h2>
+          <div className="bg-slate-800 rounded p-4 border border-slate-700">
+            <h3 className="text-lg text-white font-medium mb-2">Aion</h3>
+            <p className="text-slate-400 text-sm mb-3">
+              LLVM optimization debugger. Answers the question every compiler engineer loses sleep over: &quot;why didn&apos;t it optimize?&quot;
+            </p>
+            <Link href="/projects" className="text-blue-400 hover:text-blue-300 text-sm">
+              View all projects →
+            </Link>
+          </div>
         </section>
+      </div>
 
-        <footer className="mt-12 pt-8 border-t border-gray-200 text-sm text-gray-600">
-          <p>built with Next.js. deployed on Vercel.</p>
-        </footer>
-      </main>
-    </>
+      {/* Sidebar */}
+      <aside className="lg:col-span-1">
+        <div className="sticky top-32">
+          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Recent Posts</h3>
+          <div className="space-y-3">
+            {[
+              { title: 'Understanding LLVM IR', views: 1240 },
+              { title: 'Kernel Debugging Tips', views: 892 },
+              { title: 'Compiler Optimization Tricks', views: 756 },
+              { title: 'RISC-V Architecture Deep Dive', views: 654 },
+              { title: 'Memory Allocation Strategies', views: 543 },
+            ].map((post, i) => (
+              <div key={i} className="text-sm border-b border-slate-700 pb-3 last:border-0">
+                <a href="#" className="text-blue-400 hover:text-blue-300 block mb-1">
+                  {post.title}
+                </a>
+                <span className="text-slate-500 text-xs">({post.views})</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/about" className="text-blue-400 hover:text-blue-300">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects" className="text-blue-400 hover:text-blue-300">
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-blue-400 hover:text-blue-300">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <a href="https://github.com/janmejayapanda400" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
+                  GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </main>
   );
 }
